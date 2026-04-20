@@ -1,5 +1,6 @@
 "use client"
 import { useForm } from "react-hook-form"
+import type { Resolver } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { promptApi } from "@/lib/api"
@@ -25,9 +26,8 @@ export function CreatePromptDialog({ open, onOpenChange }: {
   open: boolean; onOpenChange: (v: boolean) => void
 }) {
   const qc = useQueryClient()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
-    resolver: zodResolver(schema) as any,
+    resolver: zodResolver(schema) as Resolver<FormData>,
     defaultValues: { category: "GENERAL", visibility: "PRIVATE" },
   })
 

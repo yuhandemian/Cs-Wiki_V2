@@ -1,5 +1,5 @@
 "use client"
-import { PROVIDERS, LlmProvider } from "@/types"
+import { PROVIDERS } from "@/types"
 import { useMultiChatStore } from "@/stores/chatStore"
 import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"

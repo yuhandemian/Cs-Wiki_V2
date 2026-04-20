@@ -34,7 +34,7 @@ interface Props {
 export function PromptCard({ prompt, queryKey }: Props) {
   const qc = useQueryClient()
   const router = useRouter()
-  const { setInput, selectedProviders } = useMultiChatStore()
+  const { setInput } = useMultiChatStore()
 
   const handleLike = async (e: React.MouseEvent) => {
     e.stopPropagation()

@@ -48,9 +48,6 @@ export default function ChatPage() {
 }
 
 function EmptyState() {
-  const providerColors: Record<string, string> = Object.fromEntries(
-    PROVIDERS.map((p) => [p.id, p.color])
-  )
   return (
     <div className="h-full flex flex-col items-center justify-center gap-6 text-center">
       <div className="flex gap-2">

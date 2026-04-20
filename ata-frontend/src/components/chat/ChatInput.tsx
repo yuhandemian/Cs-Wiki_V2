@@ -9,7 +9,7 @@ import { Send, Square } from "lucide-react"
 import { ProviderSelector } from "./ProviderSelector"
 
 export function ChatInput() {
-  const { inputMessage, setInput, selectedProviders, addMessage, setPanelLoading, setPanelError, appendStream, commitStream, panels } = useMultiChatStore()
+  const { inputMessage, setInput, selectedProviders, addMessage, setPanelLoading, setPanelError, panels } = useMultiChatStore()
   const abortRef = useRef<AbortController | null>(null)
   const isLoading = selectedProviders.some((p) => panels[p]?.loading)
 
@@ -43,7 +43,7 @@ export function ChatInput() {
         }
       })
     )
-  }, [inputMessage, selectedProviders, isLoading, panels, setInput, addMessage, setPanelLoading, setPanelError, appendStream, commitStream])
+  }, [inputMessage, selectedProviders, isLoading, panels, setInput, addMessage, setPanelLoading, setPanelError])
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
