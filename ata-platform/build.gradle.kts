@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 
 plugins {
     kotlin("jvm") version "1.9.25" apply false
@@ -9,15 +10,10 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "12.1.1" apply false
 }
 
-val springBootVersion = "3.3.5"
-val springCloudVersion = "2023.0.3"
-val jwtVersion = "0.12.6"
-
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "org.jetbrains.kotlin.plugin.spring")
     apply(plugin = "io.spring.dependency-management")
-    apply(plugin = "org.jlleitschuh.gradle.ktlint")
 
     group = "io.ata"
     version = "0.0.1-SNAPSHOT"
@@ -26,10 +22,10 @@ subprojects {
         mavenCentral()
     }
 
-    dependencyManagement {
+    configure<DependencyManagementExtension> {
         imports {
-            mavenBom("org.springframework.boot:spring-boot-dependencies:$springBootVersion")
-            mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+            mavenBom("org.springframework.boot:spring-boot-dependencies:3.3.5")
+            mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.3")
         }
     }
 
@@ -44,7 +40,7 @@ subprojects {
     tasks.withType<KotlinCompile> {
         kotlinOptions {
             freeCompilerArgs += "-Xjsr305=strict"
-            jvmTarget = "21"
+            jvmTarget = "17"
         }
     }
 

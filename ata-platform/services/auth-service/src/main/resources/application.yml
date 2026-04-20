@@ -5,32 +5,25 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/ata_auth?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/ata_auth?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
     username: ${MYSQL_USER:ata_user}
     password: ${MYSQL_PASSWORD:ata_password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
-        format_sql: true
         dialect: org.hibernate.dialect.MySQLDialect
   data:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${GOOGLE_CLIENT_ID:}
-            client-secret: ${GOOGLE_CLIENT_SECRET:}
-            scope: email, profile
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientAutoConfiguration
 
 jwt:
   secret: ${JWT_SECRET:ata-default-secret-key-must-be-256-bits-long-change-in-prod}
-  access-token-expiry: 3600000      # 1시간
-  refresh-token-expiry: 2592000000  # 30일
+  access-token-expiry: 3600000
+  refresh-token-expiry: 2592000000
