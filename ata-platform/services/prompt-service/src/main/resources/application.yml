@@ -1,0 +1,15 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: prompt-service
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/ata_prompt?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: ${MYSQL_USER:ata_user}
+    password: ${MYSQL_PASSWORD:ata_password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false

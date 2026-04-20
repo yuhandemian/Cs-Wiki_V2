@@ -1,0 +1,66 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins:
+              - "http://localhost:3000"
+              - "https://allthatai.io"
+            allowed-methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"]
+            allowed-headers: ["*"]
+            allow-credentials: true
+            max-age: 3600
+      routes:
+        - id: auth-service
+          uri: http://${AUTH_SERVICE_HOST:localhost}:8081
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 20
+                redis-rate-limiter.burstCapacity: 40
+
+        - id: chat-service
+          uri: http://${CHAT_SERVICE_HOST:localhost}:8082
+          predicates:
+            - Path=/api/chat/**
+          filters:
+            - JwtAuthFilter
+
+        - id: ai-proxy-service
+          uri: http://${AI_PROXY_HOST:localhost}:8083
+          predicates:
+            - Path=/api/ai/**
+          filters:
+            - JwtAuthFilter
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+
+        - id: prompt-service
+          uri: http://${PROMPT_SERVICE_HOST:localhost}:8084
+          predicates:
+            - Path=/api/prompts/**
+          filters:
+            - JwtAuthFilter
+
+jwt:
+  secret: ${JWT_SECRET:ata-default-secret-key-must-be-256-bits-long-change-in-prod}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,6 @@
+CREATE DATABASE IF NOT EXISTS ata_auth DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS ata_prompt DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+GRANT ALL PRIVILEGES ON ata_auth.* TO 'ata_user'@'%';
+GRANT ALL PRIVILEGES ON ata_prompt.* TO 'ata_user'@'%';
+FLUSH PRIVILEGES;

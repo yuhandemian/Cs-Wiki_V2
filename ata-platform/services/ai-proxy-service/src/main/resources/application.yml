@@ -1,0 +1,48 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: ai-proxy-service
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  codec:
+    max-in-memory-size: 10MB
+
+ai:
+  providers:
+    openai:
+      base-url: https://api.openai.com/v1
+      api-key: ${OPENAI_API_KEY:}
+      default-model: gpt-4o
+    anthropic:
+      base-url: https://api.anthropic.com/v1
+      api-key: ${ANTHROPIC_API_KEY:}
+      default-model: claude-sonnet-4-6
+      version: "2023-06-01"
+    gemini:
+      base-url: https://generativelanguage.googleapis.com/v1beta
+      api-key: ${GEMINI_API_KEY:}
+      default-model: gemini-2.0-flash
+    grok:
+      base-url: https://api.x.ai/v1
+      api-key: ${GROK_API_KEY:}
+      default-model: grok-3
+    perplexity:
+      base-url: https://api.perplexity.ai
+      api-key: ${PERPLEXITY_API_KEY:}
+      default-model: sonar-pro
+    deepseek:
+      base-url: https://api.deepseek.com/v1
+      api-key: ${DEEPSEEK_API_KEY:}
+      default-model: deepseek-chat
+
+rate-limit:
+  free:
+    daily-tokens: 50000
+  pro:
+    daily-tokens: 2000000
+  enterprise:
+    daily-tokens: -1  # unlimited
