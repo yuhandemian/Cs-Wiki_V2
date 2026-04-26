@@ -1,4 +1,4 @@
-# ATA Learning Guide
+# Learning Guide
 
 이 문서는 이 프로젝트를 처음 공부할 때 보는 진입점입니다.
 Java/Spring Boot 경험은 있지만 Kotlin은 처음이라는 전제로 작성되었습니다.
@@ -21,14 +21,14 @@ Java/Spring Boot 경험은 있지만 Kotlin은 처음이라는 전제로 작성�
 인증 흐름부터 보는 것을 추천합니다.
 
 ```text
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/AuthApplication.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/controller/AuthController.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/service/AuthService.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/service/JwtService.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/config/SecurityConfig.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/domain/User.kt
-ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/dto/AuthDto.kt
-ata-platform/services/api-gateway/src/main/kotlin/io/ata/gateway/filter/JwtAuthFilter.kt
+services/auth-service/.../AuthApplication.kt
+services/auth-service/.../AuthController.kt
+services/auth-service/.../AuthService.kt
+services/auth-service/.../JwtService.kt
+services/auth-service/.../SecurityConfig.kt
+services/auth-service/.../User.kt
+services/auth-service/.../AuthDto.kt
+services/api-gateway/.../JwtAuthFilter.kt
 ```
 
 읽는 요령:
@@ -44,9 +44,9 @@ ata-platform/services/api-gateway/src/main/kotlin/io/ata/gateway/filter/JwtAuthF
 백엔드 인증 흐름을 본 다음에는 프론트엔드의 API 연결부를 보면 좋습니다.
 
 ```text
-ata-frontend/src/lib/api.ts
-ata-frontend/src/stores/authStore.ts
-ata-frontend/src/stores/chatStore.ts
+src/lib/api.ts
+src/stores/authStore.ts
+src/stores/chatStore.ts
 ```
 
 여기서 확인할 것:

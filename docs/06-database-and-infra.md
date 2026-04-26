@@ -1,6 +1,6 @@
 # Database and Infra
 
-이 프로젝트의 로컬 인프라는 `ata-platform/docker-compose.yml`에 정의되어 있습니다.
+이 프로젝트의 로컬 인프라는 백엔드 루트의 `docker-compose.yml`에 정의되어 있습니다.
 
 ## 구성 요소
 
@@ -20,21 +20,21 @@ MySQL은 정형 데이터 저장에 사용됩니다.
 현재 연결된 서비스:
 
 ```text
-auth-service   -> ata_auth
-prompt-service -> ata_prompt
+auth-service   -> auth DB
+prompt-service -> prompt DB
 ```
 
 초기화 SQL:
 
 ```text
-ata-platform/infra/mysql/init/01_create_databases.sql
-ata-platform/infra/mysql/init/02_auth_schema.sql
-ata-platform/infra/mysql/init/03_prompt_schema.sql
+infra/mysql/init/01_create_databases.sql
+infra/mysql/init/02_auth_schema.sql
+infra/mysql/init/03_prompt_schema.sql
 ```
 
 ### auth-service
 
-`auth-service`는 `ata_auth` 데이터베이스를 사용합니다.
+`auth-service`는 인증용 MySQL 데이터베이스를 사용합니다.
 
 주요 테이블:
 
@@ -56,7 +56,7 @@ users
 
 ### prompt-service
 
-`prompt-service`는 `ata_prompt` 데이터베이스를 사용합니다.
+`prompt-service`는 프롬프트용 MySQL 데이터베이스를 사용합니다.
 
 주요 테이블:
 
@@ -117,7 +117,7 @@ MongoDB는 `chat-service`에서 사용합니다.
 데이터베이스:
 
 ```text
-ata_chat
+chat DB
 ```
 
 컬렉션:
@@ -208,7 +208,7 @@ MinIO Console     9001
 4. ai-proxy-service 실행
 5. prompt-service 실행
 6. api-gateway 실행
-7. ata-frontend 실행
+7. 프론트엔드 실행
 ```
 
 프론트엔드는 gateway 주소인 `http://localhost:8080`을 바라봅니다.

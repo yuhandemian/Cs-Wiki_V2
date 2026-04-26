@@ -1,4 +1,4 @@
-# ATA Project Learning Roadmap
+# Project Learning Roadmap
 
 이 문서는 Java 경험은 있지만 Kotlin 경험은 없는 상태에서 이 프로젝트를 공부하기 위한 작업 기획서입니다.
 목표는 단순히 실행 방법을 아는 것이 아니라, 각 파일이 왜 존재하고 요청이 어떤 흐름으로 처리되는지 이해할 수 있게 만드는 것입니다.
@@ -38,7 +38,7 @@ LEARNING_GUIDE.md
 5. `prompt-service`에서 JPA 기반 CRUD 흐름 보기
 6. `chat-service`에서 MongoDB 기반 대화 저장 흐름 보기
 7. `ai-proxy-service`에서 외부 LLM API 프록시 흐름 보기
-8. `ata-frontend`에서 API 호출, 토큰 저장, 화면 연결 흐름 보기
+8. 프론트엔드 앱에서 API 호출, 토큰 저장, 화면 연결 흐름 보기
 
 ## 작업 순서
 

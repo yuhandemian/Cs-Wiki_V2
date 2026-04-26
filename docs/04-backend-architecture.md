@@ -1,11 +1,11 @@
 # Backend Architecture
 
-백엔드는 `ata-platform` 아래의 Gradle 멀티모듈 프로젝트입니다. 각 서비스는 독립적인 Spring Boot 애플리케이션이고, 외부 요청은 `api-gateway`를 통해 들어오는 구조입니다.
+백엔드는 Gradle 멀티모듈 프로젝트입니다. 각 서비스는 독립적인 Spring Boot 애플리케이션이고, 외부 요청은 `api-gateway`를 통해 들어오는 구조입니다.
 
 ## 모듈 구성
 
 ```text
-ata-platform/
+backend-platform/
 ├── settings.gradle.kts
 ├── build.gradle.kts
 ├── docker-compose.yml
@@ -55,7 +55,7 @@ Frontend
 
 `auth-service`는 인증의 기준점입니다.
 
-- 사용자 저장: MySQL `ata_auth.users`
+- 사용자 저장: MySQL `users` 테이블
 - 비밀번호 hash: BCrypt
 - access token 발급: userId, email, plan claim 포함
 - refresh token 발급: userId만 subject로 포함

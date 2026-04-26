@@ -1,6 +1,6 @@
 # Frontend Architecture
 
-`ata-frontend`는 Next.js App Router 기반 프론트엔드입니다.
+프론트엔드는 Next.js App Router 기반 애플리케이션입니다.
 
 ## 주요 스택
 
@@ -18,7 +18,7 @@ Radix UI 기반 컴포넌트
 ## 디렉터리 구조
 
 ```text
-ata-frontend/src/
+frontend-app/src/
 ├── app/
 │   ├── (auth)/
 │   ├── (dashboard)/

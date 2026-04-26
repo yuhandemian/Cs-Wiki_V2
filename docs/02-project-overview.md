@@ -10,7 +10,7 @@ Browser
   |
   | HTTP
   v
-ata-frontend (Next.js)
+frontend-app (Next.js)
   |
   | Axios, Authorization: Bearer <accessToken>
   v
@@ -26,7 +26,7 @@ api-gateway (Spring Cloud Gateway, port 8080)
 ## 서비스 구성
 
 ```text
-ata-platform/services/
+services/
 ├── api-gateway          # 단일 진입점, 라우팅, JWT 검증
 ├── auth-service         # 회원가입, 로그인, JWT 발급, refresh/logout
 ├── prompt-service       # 프롬프트 CRUD, 공개 라이브러리, 검색
@@ -72,23 +72,23 @@ MinIO     - docker-compose에는 있으나 현재 직접 사용 코드는 미확
 백엔드를 먼저 이해하려면 아래 순서를 추천합니다.
 
 ```text
-1. ata-platform/settings.gradle.kts
-2. ata-platform/build.gradle.kts
-3. ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/controller/AuthController.kt
-4. ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/service/AuthService.kt
-5. ata-platform/services/auth-service/src/main/kotlin/io/ata/auth/service/JwtService.kt
-6. ata-platform/services/api-gateway/src/main/kotlin/io/ata/gateway/filter/JwtAuthFilter.kt
-7. ata-platform/services/api-gateway/src/main/resources/application.yml
+1. backend root `settings.gradle.kts`
+2. backend root `build.gradle.kts`
+3. `services/auth-service/.../AuthController.kt`
+4. `services/auth-service/.../AuthService.kt`
+5. `services/auth-service/.../JwtService.kt`
+6. `services/api-gateway/.../JwtAuthFilter.kt`
+7. `services/api-gateway/src/main/resources/application.yml`
 ```
 
 프론트엔드 연결을 보려면 다음 파일을 보면 됩니다.
 
 ```text
-1. ata-frontend/src/lib/api.ts
-2. ata-frontend/src/stores/authStore.ts
-3. ata-frontend/src/app/(auth)/sign-in/page.tsx
-4. ata-frontend/src/app/(dashboard)/chat/page.tsx
-5. ata-frontend/src/app/(dashboard)/prompts/page.tsx
+1. `src/lib/api.ts`
+2. `src/stores/authStore.ts`
+3. `src/app/(auth)/sign-in/page.tsx`
+4. `src/app/(dashboard)/chat/page.tsx`
+5. `src/app/(dashboard)/prompts/page.tsx`
 ```
 
 ## Java/Spring 경험으로 읽는 방법
