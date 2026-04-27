@@ -1,4 +1,4 @@
-rootProject.name = "ata-platform"
+rootProject.name = "backend-platform"
 
 include(
     "services:api-gateway",
